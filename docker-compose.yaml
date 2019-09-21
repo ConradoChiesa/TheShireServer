@@ -11,7 +11,7 @@ services:
       - WORDPRESS_TABLE_PREFIX=${WORDPRESS_TABLE_PREFIX:-wp_}
       - WORDPRESS_DB_HOST=${WORDPRESS_DB_HOST:-mysql}
       - WORDPRESS_DB_USER=${WORDPRESS_DB_USER:-konrad}
-      - WORDPRESS_DB_PASSWORD=${WORDPRESS_DB_PASSWORD:-m4lv4s}
+      - WORDPRESS_DB_PASSWORD=${WORDPRESS_DB_PASSWORD:-123}
     depends_on:
       - mysql
     restart: always
@@ -22,9 +22,9 @@ services:
     volumes:
       - ./mysql:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-m4lv4s}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-123}
       - MYSQL_USER=${MYSQL_USER:-konrad}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD:-m4lv4s}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD:-123}
       - MYSQL_DATABASE=${MYSQL_DATABASE:-db_asamblea}
     restart: always
 
@@ -34,6 +34,7 @@ services:
     ports:
       - '80:80'
       - '32768:32768'
+  
     volumes:
       - ${NGINX_CONF_DIR:-./nginx}:/etc/nginx/conf.d
       - ${NGINX_LOG_DIR:-./logs/nginx}:/var/log/nginx
